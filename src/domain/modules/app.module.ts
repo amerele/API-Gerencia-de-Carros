@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { KnexConnectModule } from 'src/infraestructure/knex config/knex.module';
 import { AppController } from '../../presentation/controllers/app.controller';
+import { CatsModule } from './cars.module';
+import { CarsController } from 'src/presentation/controllers/cars.controller';
 
 @Module({
-  imports: [KnexConnectModule, ],
-  controllers: [AppController],
-  providers: [],
+  imports: [],
+  controllers: [AppController, CarsController],
+  providers: [CatsModule],
 })
 export class AppModule {}

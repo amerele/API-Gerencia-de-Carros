@@ -1,11 +1,11 @@
 import { Controller, Get, Res } from '@nestjs/common';
 
-@Controller()
-export class AppController {
+@Controller('/cats')
+export class CarsController {
   constructor() {}
 
-  @Get()
+  @Get('/')
   getHello() {
-    return 'Happ';
+    return 'cars';
   }
 }

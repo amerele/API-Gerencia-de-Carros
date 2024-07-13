@@ -1,18 +1,51 @@
-import { Controller, Get, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Res,
+} from '@nestjs/common';
 import { CarsService } from 'src/application/services/cars.service';
+import { Ok } from '../responses/success.types';
 
-@Controller('/cats')
+@Controller('/cars')
 export class CarsController {
-  constructor( 
-    private readonly carsService: CarsService
-  ) {}
+  constructor(private readonly carsService: CarsService) {}
 
-  @Get('/')
-  getHello() {
-    return 'hello';
+  @Get('')
+  public async findAll() {
+    const car = await this.carsService.findAll();
+    return Ok(car);
   }
-  @Get('/teste')
-  teste() {
-    return this.carsService.findAll();
+  @Get(':id')
+  public async findByPrimary(@Param('id') id: string) {
+    const car = await this.carsService.findByPrimary(id);
+    return Ok(car);
+  }
+  @Get('/user/:user')
+  public async findByUser(@Param('user') reservedUser: string) {
+    const car = await this.carsService.findByUser(reservedUser);
+    return Ok(car);
+  }
+
+  @Post()
+  public async create(@Body() carBodyDto: any) {
+    //implementar dto de cars
+    const car = await this.carsService.create(carBodyDto);
+    return Ok(car);
+  }
+  @Put(':id')
+  public async update(@Param('id') id: string, @Body() carBodyDto: any) {
+    //implementar dto de cars
+    const car = await this.carsService.update(id, carBodyDto);
+    return Ok(car);
+  }
+  @Delete(':id')
+  public async delete(@Param('id') id: number) {
+    const car = await this.carsService.delete(id);
+    return Ok(car);
   }
 }

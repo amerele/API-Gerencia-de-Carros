@@ -5,15 +5,33 @@ import { Injectable, Inject } from '@nestjs/common';
 export class CarsRepository {
   constructor(
     @Inject('CAR_MODEL')
-    private catModel: Model<any>,
+    private carModel: Model<any>,
   ) {}
 
-  async create(createCatDto: any): Promise<any> {
-    const createdCat = new this.catModel(createCatDto);
-    return createdCat.save();
-  }
-
   async findAll(): Promise<any[]> {
-    return this.catModel.find().exec();
+    return await this.carModel.find();
+  }
+  async findByPrimary(id: string): Promise<any[]> {
+    try {
+      return await this.carModel.findById(id).exec();
+    } catch (error) {
+      return null;
+    }
+  }
+  async findByUser(reservedUser: string): Promise<any[]> {
+    return await this.carModel.findOne({ reservedUser });
+  }
+  async findByCombination(id: number): Promise<any[]> {
+    return await this.carModel.findById(id);
+  }
+  async create(carBodyDto: any): Promise<any> {
+    const createdCar = new this.carModel(carBodyDto);
+    return await createdCar.save();
+  }
+  async update(id: string, carBodyDto: any): Promise<any> {
+    return await this.carModel.findByIdAndUpdate(id, carBodyDto);
+  }
+  async delete(id: number): Promise<any> {
+    return this.carModel.findByIdAndDelete(id);
   }
 }

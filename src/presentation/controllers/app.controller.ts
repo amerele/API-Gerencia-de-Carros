@@ -6,6 +6,6 @@ export class AppController {
 
   @Get()
   getHello() {
-    return 'Happ';
+    return 'Developed by Bruno Gomes';
   }
 }

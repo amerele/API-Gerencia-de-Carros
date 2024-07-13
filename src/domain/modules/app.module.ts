@@ -1,11 +1,19 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from '../../presentation/controllers/app.controller';
-import { CatsModule } from './cars.module';
+import { CarsModule } from './cars.module';
 import { CarsController } from 'src/presentation/controllers/cars.controller';
+import { AuthModule } from 'src/auth/auth.module';
+import { JwtService } from '@nestjs/jwt';
+import { AuthService } from 'src/auth/auth.service';
+import { UsersModule } from './users.module';
+import { UsersController } from 'src/presentation/controllers/users.controller';
 
 @Module({
-  imports: [],
+  imports: [
+    CarsModule,
+  ],
   controllers: [AppController, CarsController],
-  providers: [CatsModule],
+  providers: [],
 })
 export class AppModule {}

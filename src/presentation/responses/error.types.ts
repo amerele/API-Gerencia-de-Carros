@@ -4,10 +4,10 @@ import { IJsonResponse } from "./json-response.contract";
 export const Error = (
   status: number | string,
   message: string,
-  error: any,
+  error?: any,
 ): IJsonResponse<null> => ({
   statusCode: status,
   message: message,
-  data: null,
+  inner: null,
   error,
 });

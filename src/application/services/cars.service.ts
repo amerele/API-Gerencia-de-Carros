@@ -1,19 +1,19 @@
 import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
+import { CarsRepository } from 'src/infraestructure/database/repositories/cars.repository';
 
 @Injectable()
 export class CarsService {
   constructor(
-    @Inject('cars')
-    private carModel: Model<any>,
+    private carRepository: CarsRepository,
   ) {}
 
-  async create(createCarDto: any): Promise<any> {
-    const createdCar = new this.carModel(createCarDto);
-    return createdCar.save();
+  async create(createCatDto: any): Promise<any> {
+    const createdCat = this.carRepository.create(createCatDto);
+    return createdCat;
   }
 
   async findAll(): Promise<any[]> {
-    return this.carModel.find().exec();
+    return this.carRepository.findAll();
   }
 }

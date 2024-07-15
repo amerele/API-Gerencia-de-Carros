@@ -29,7 +29,7 @@ export class AppController {
 
   @Public()
   @Get()
-  getHello() {
+  getHello(): string {
     return 'Developed by Bruno Gomes';
   }
 }

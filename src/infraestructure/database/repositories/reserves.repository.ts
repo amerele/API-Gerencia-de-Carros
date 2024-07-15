@@ -7,7 +7,7 @@ import { BodyReservesDto } from 'src/application/DTOs/body-reserves.dto';
 export class ReserveRepository {
   constructor(
     @Inject('RESERVE_MODEL')
-    private reserveModel: Model<any>,
+    private reserveModel: Model<Reserves>,
   ) {}
 
   async findAllReserves(status?: string): Promise<Reserves[]> {
@@ -19,7 +19,7 @@ export class ReserveRepository {
 
     return await this.reserveModel.find(filter).exec();
   }
-  async findByPrimary(id: string): Promise<any> {
+  async findByPrimary(id: string): Promise<Reserves> {
     try {
       return await this.reserveModel.findById(id).exec();
     } catch (error) {
@@ -31,7 +31,7 @@ export class ReserveRepository {
 
     return reserves.length === 1;
   }
-  async findReserveByUser(username: string, status?: string): Promise<any[]> {
+  async findReserveByUser(username: string, status?: string): Promise<Reserves[]> {
     const filter: any = {};
 
     if (status) {
@@ -40,14 +40,14 @@ export class ReserveRepository {
     }
     return await this.reserveModel.find(filter);
   }
-  async reserve(bodyReserveDto: BodyReservesDto): Promise<BodyReservesDto> {
+  async reserve(bodyReserveDto: Partial<BodyReservesDto>): Promise<Reserves> {
     const reserve = new this.reserveModel(bodyReserveDto);
     return await reserve.save();
   }
-  async update(id: string, bodyReserveDto: any): Promise<any> {
+  async update(id: string, bodyReserveDto: Partial<BodyReservesDto>): Promise<Reserves> {
     return await this.reserveModel.findByIdAndUpdate(id, bodyReserveDto);
   }
-  async delete(id: number): Promise<any> {
+  async delete(id: number): Promise<Reserves> {
     return this.reserveModel.findByIdAndDelete(id);
   }
 }

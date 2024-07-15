@@ -26,7 +26,7 @@ export class ReserveService {
   async findReserveByUser(
     reservedUser: string,
     status?: string,
-  ): Promise<any[]> {
+  ): Promise<Reserves[]> {
     await this.userService.findByUsername(reservedUser);
     try {
       return await this.reserveRepository.findReserveByUser(
@@ -38,7 +38,7 @@ export class ReserveService {
       throw error;
     }
   }
-  async findByPrimary(id: string): Promise<any> {
+  async findByPrimary(id: string): Promise<Reserves> {
     /* onst user = await this.userService.findByUsername(reservedUser);
     if (!user) throw Error(404, 'User not found'); */
     try {

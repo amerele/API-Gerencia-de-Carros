@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CarsRepository } from 'src/infraestructure/database/repositories/cars.repository';
 import { Error } from 'src/presentation/responses/error.types';
 import { UsersService } from './users.service';
+import { Cars } from 'src/domain/entities/cars.entity';
+import { BodyCarsDto } from '../DTOs/body-cars.dto';
 
 @Injectable()
 export class CarsService {
@@ -10,7 +12,7 @@ export class CarsService {
     private userService: UsersService,
   ) {}
 
-  async findAll(): Promise<any[]> {
+  async findAll(): Promise<Cars[]> {
     try {
       return await this.carRepository.findAll();
     } catch (error) {
@@ -18,7 +20,7 @@ export class CarsService {
       throw error;
     }
   }
-  async findAvaliable(): Promise<any[]> {
+  async findAvaliable(): Promise<Cars[]> {
     try {
       return await this.carRepository.findAvaliable();
     } catch (error) {
@@ -26,7 +28,7 @@ export class CarsService {
       throw error;
     }
   }
-  async findByPrimary(id: string): Promise<any> {
+  async findByPrimary(id: string): Promise<Cars> {
     const car = await this.carRepository.findByPrimary(id);
     if (!car) throw Error(404, 'Car not found');
     try {
@@ -36,7 +38,7 @@ export class CarsService {
       throw error;
     }
   }
-  async validateAvaliability(id: string): Promise<any> {
+  async validateAvaliability(id: string): Promise<Cars | string> {
     await this.findByPrimary(id)
     const car = await this.carRepository.validateAvaliability(id);
     if (!car) throw Error(400, 'This car is not avaliable');
@@ -48,7 +50,7 @@ export class CarsService {
       throw error;
     }
   }
-  async findByUser(reservedUser: string): Promise<any[]> {
+  async findByUser(reservedUser: string): Promise<Cars> {
     /* onst user = await this.userService.findByUsername(reservedUser);
     if (!user) throw Error(404, 'User not found'); */
     try {
@@ -58,7 +60,7 @@ export class CarsService {
       throw error;
     }
   }
-  async create(carBodyDto: any): Promise<any> {
+  async create(carBodyDto: BodyCarsDto): Promise<Cars> {
     try {
       return await this.carRepository.create(carBodyDto);
     } catch (error) {
@@ -66,7 +68,7 @@ export class CarsService {
       throw error;
     }
   }
-  async update(id: string, carBodyDto: any): Promise<any> {
+  async update(id: string, carBodyDto: Partial<BodyCarsDto>): Promise<Cars> {
     try {
       await this.carRepository.update(id, carBodyDto);
       return this.carRepository.findByPrimary(id);
@@ -75,7 +77,7 @@ export class CarsService {
       throw error;
     }
   }
-  async delete(id: string): Promise<any> {
+  async delete(id: string): Promise<Cars> {
     try {
       return this.carRepository.delete(id);
     } catch (error) {

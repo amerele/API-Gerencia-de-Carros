@@ -36,6 +36,7 @@ export class UsersService {
       throw error;
     }
   }
+  
 
   async create(bodyUsersDto: BodyUsersDto): Promise<BodyUsersDto> {
     bodyUsersDto.username = bodyUsersDto.username.toLowerCase() 

@@ -20,6 +20,11 @@ export class CarsController {
     const car = await this.carsService.findAll();
     return Ok(car);
   }
+  @Get('/avaliables')
+  public async findAvaliable() {
+    const car = await this.carsService.findAvaliable();
+    return Ok(car);
+  }
   @Get(':id')
   public async findByPrimary(@Param('id') id: string) {
     const car = await this.carsService.findByPrimary(id);
@@ -44,7 +49,7 @@ export class CarsController {
     return Ok(car);
   }
   @Delete(':id')
-  public async delete(@Param('id') id: number) {
+  public async delete(@Param('id') id: string) {
     const car = await this.carsService.delete(id);
     return Ok(car);
   }

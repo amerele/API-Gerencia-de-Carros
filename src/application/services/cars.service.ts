@@ -18,9 +18,29 @@ export class CarsService {
       throw error;
     }
   }
+  async findAvaliable(): Promise<any[]> {
+    try {
+      return await this.carRepository.findAvaliable();
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
   async findByPrimary(id: string): Promise<any> {
     const car = await this.carRepository.findByPrimary(id);
     if (!car) throw Error(404, 'Car not found');
+    try {
+      return car;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+  async validateAvaliability(id: string): Promise<any> {
+    await this.findByPrimary(id)
+    const car = await this.carRepository.validateAvaliability(id);
+    if (!car) throw Error(400, 'This car is not avaliable');
+    
     try {
       return car;
     } catch (error) {
@@ -55,9 +75,9 @@ export class CarsService {
       throw error;
     }
   }
-  async delete(createCatDto: any): Promise<any> {
+  async delete(id: string): Promise<any> {
     try {
-      return this.carRepository.delete(createCatDto);
+      return this.carRepository.delete(id);
     } catch (error) {
       console.log(error);
       throw error;

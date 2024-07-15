@@ -1,10 +1,10 @@
 export default {
   OK: 'Ok',
-  CREATED: 'Criado com sucesso',
-  BAD_REQUEST: 'Requisição inválida',
-  UNAUTHORIZED: 'Não autorizado',
-  FORBIDDEN: 'Acesso negado',
-  NOT_FOUND: 'Não encontrado',
-  ERROR_GENERIC: 'Ocorreu um erro',
-  INTERNAL_SERVER_ERROR: 'Erro interno do servidor',
+  CREATED: 'Created successfully',
+  BAD_REQUEST: 'Bad request',
+  UNAUTHORIZED: 'Unauthorized',
+  FORBIDDEN: 'Forbidden',
+  NOT_FOUND: 'Not found',
+  ERROR_GENERIC: 'An error occurred',
+  INTERNAL_SERVER_ERROR: 'Internal server error',
 };

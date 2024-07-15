@@ -1,11 +1,5 @@
 export class Users {
-  id: number;
-  email: string;
+  _id: string;
+  username: string;
   password: string;
-  name: string;
-  lastName: string;
-  address: string;
-  zipcode: string;
-  phone: string;
-  emergencyPhone: string;
 }

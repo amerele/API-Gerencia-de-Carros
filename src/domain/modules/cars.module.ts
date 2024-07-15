@@ -6,6 +6,7 @@ import { DatabaseModule } from './database.module';
 import { CarsRepository } from 'src/infraestructure/database/repositories/cars.repository';
 import { UsersService } from 'src/application/services/users.service';
 import { userProviders } from '../providers/users.providers';
+import { UsersRepository } from 'src/infraestructure/database/repositories/users.repository';
 
 @Module({
   imports: [DatabaseModule],
@@ -14,9 +15,10 @@ import { userProviders } from '../providers/users.providers';
     CarsService,
     CarsRepository,
     UsersService,
+    UsersRepository,
     ...carsProviders,
     ...userProviders,
   ],
-  exports: [CarsService, CarsRepository, UsersService],
+  exports: [CarsService, CarsRepository, UsersService, UsersRepository],
 })
 export class CarsModule {}

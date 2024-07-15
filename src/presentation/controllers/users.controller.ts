@@ -11,39 +11,44 @@ import {
 import { Created, Ok } from '../responses/success.types';
 import { BodyUsersDto } from 'src/application/DTOs/body-users.dto';
 import { UsersService } from 'src/application/services/users.service';
+import { Users } from 'src/domain/entities/users.entity';
+import { JsonResponse } from '../responses/json-response.contract';
 
 @Controller('/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  public async findAll() {
-    const users = this.usersService.findAll();
+  public async findAll(): Promise<JsonResponse<Users[]>> {
+    const users = await this.usersService.findAll();
     return Ok(users);
   }
   @Get(':id')
-  public async findByPrimary(@Param('id') id: string) {
-    const users = this.usersService.findByPrimary(id);
+  public async findByPrimary(
+    @Param('id') id: string,
+  ): Promise<JsonResponse<Users[]>> {
+    const users = await this.usersService.findByPrimary(id);
     return Ok(users);
   }
-  @Get()
-  public async findByUsername(@Param('username') username: string) {
-    const users = this.usersService.findByUsername(username);
+  @Get('/username/:username')
+  public async findByUsername(
+    @Param('username') username: string,
+  ): Promise<JsonResponse<Users>> {
+    const users = await this.usersService.findByUsername(username);
     return Ok(users);
   }
-  @Post()
-  public async create(@Body() body: BodyUsersDto) {
-    const users = this.usersService.create(body);
-    return users;
-  }
+
   @Put(':id')
-  public async update(@Param('id') id: string, @Body() body: BodyUsersDto) {
-    const users = this.usersService.update(id, body);
+  public async update(
+    @Param('id') id: string,
+    @Body() body: BodyUsersDto,
+  ): Promise<JsonResponse<BodyUsersDto>> {
+    const users = await this.usersService.update(id, body);
     return Ok(users);
   }
-  @Delete()
-  public async delete(@Param('id') id: number) {
-    const users = this.usersService.delete(id);
+  @Delete(':id')
+  public async delete(@Param('id') id: string): Promise<JsonResponse<Users>> {
+    const users = await this.usersService.delete(id);
     return Ok(users);
   }
 }

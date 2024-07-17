@@ -23,49 +23,33 @@
   A documentação completa com Swagger pode ser acessada em {{url}}/docs
   Além disso, toda a Collection do postman está disponível para testes no arquivo ```postman-collection.js```
 
-#### Variáveis de ambiente
+## 📚 Variáveis de ambiente
   Para execução docódigo são necessárias algumas variaveis de espaço, por isto, um exemplo utilizável com dotenv está em ```.env.example```, bastando renomea-lo para ".env" para que seja usado.
 
-#### Sobre o projeto
+## 📈 Sobre o projeto
   Projeto desenvolvido em NestJs pela sua versatibilidade e facilidade de escala se necessário, graças a sua arquitetura modular.
   O código conta com testes unitários Jest, autenticação JWT e guards de rotas publicas e privadas através do token, além de tratativa personalizada de erros.
   
   Foi utilizado uma estrutura de pastas seguindo Clean Architecture, que pode ser melhor entendido abaixo:
-                        ```plaintext
-                         -----------------------------
-                        |        Presentation        |
-                        |----------------------------|
-                        |                            |
-                        | Controllers, Decorators    |
-                        | responses                  |
-                         ----------------------------
-                                    |
-                                    v
-                         ----------------------------
-                        |        Application         |
-                        |----------------------------|
-                        |                            |
-                        | DTOs, Services             |
-                        | Regras de negócio          |
-                         ----------------------------
-                                    |
-                                    v
-                         ----------------------------
-                        |           Domain           |
-                        |----------------------------|
-                        |                            |
-                        | Entities, Modules          |
-                        | Mongo Providers            |
-                         ----------------------------
-                                    |
-                                    v
-                         ----------------------------
-                        |        Infrastructure      |
-                        |----------------------------|
-                        |                            |
-                        | Database config, Models    |
-                        | Repositories,              |
-                         ----------------------------```
+  
+                         -----------------------------           ----------------------------
+                        |        Presentation        |          |        Application         |
+                        |----------------------------|          |----------------------------|
+                        |                            |          |                            |
+                        | Controllers, Decorators    |          | DTOs, Services             |
+                        | responses                  |          | Regras de negócio          |
+                         ----------------------------            ----------------------------
+                         
+                         ----------------------------           ----------------------------
+                        |           Domain           |         |        Infrastructure      |
+                        |----------------------------|         |----------------------------|
+                        |                            |         |                            |
+                        | Entities, Modules          |         | Database config, Models    |
+                        | Mongo Providers            |         | Repositories,              |
+                         ----------------------------           ----------------------------
+                        
+                        
+                         
   Toda a camada de lógica está presente nas camadas Service.
   
 ## ✏️ Iniciando o Projeto

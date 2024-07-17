@@ -1,0 +1,255 @@
+{
+  "info": {
+    "name": "happ",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "get hello world",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{url}}/"
+      }
+    },
+    {
+      "name": "Login",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{url}}/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"brunos\",\n  \"password\": \"password\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Register",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{url}}/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"BrUnOs\",\n  \"password\": \"password\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Reserves",
+      "item": [
+        {
+          "name": "Complete reserve",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{url}}/reserves/complete/66973f0284d572df5ccd9f81",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"15-10-2024\",\n  \"endDate\": \"25-12-2024\",\n  \"carId\": \"66917d7b21c852169712a751\",\n  \"duration\": \"String\",\n  \"userId\": \"669560f8833f3bb729234ad0\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Find All Reserves by User",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/reserves/user/bruno"
+          }
+        },
+        {
+          "name": "Find all Reserves",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/reserves"
+          }
+        },
+        {
+          "name": "Reserve",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{url}}/reserves",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"15-10-2024\",\n  \"endDate\": \"25-11-2024\",\n  \"carId\": \"66917d7221c852169712a74f\",\n  \"userId\": \"6697397a3076b4c5d831ebf8\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Delete User",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{url}}/users/6697397b3076b4c5d831ebfa",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"bruno\",\n  \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/users/6697397a3076b4c5d831ebf8"
+          }
+        },
+        {
+          "name": "Update User",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": "{{url}}/users/6697397a3076b4c5d831ebf8",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"bruno\",\n  \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Users",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/users"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cars",
+      "item": [
+        {
+          "name": "create car",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{url}}/cars",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"year\": 2017,\n  \"model\": \"Prisma\",\n  \"categorie\": \"Sedan\",\n  \"mileage\": \"82\",\n  \"avaliable\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "delete car",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{url}}/cars/66973c3302df1eb3abca9fa6"
+          }
+        },
+        {
+          "name": "get all cars",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/cars"
+          }
+        },
+        {
+          "name": "get car by params",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/cars/param?year=2017&model=Prisma"
+          }
+        },
+        {
+          "name": "get car by primary",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/cars/66917d7b21c852169712a751"
+          }
+        },
+        {
+          "name": "update car",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": "{{url}}/cars/66917d7b21c852169712a751",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avaliable\": true,\n  \"reservedUser\": \"\"\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

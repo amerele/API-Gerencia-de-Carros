@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { BodyUsersDto } from '../DTOs/body-users.dto';
-import { UsersRepository } from 'src/infraestructure/database/repositories/users.repository';
-import { Error } from 'src/presentation/responses/error.types';
-import { Users } from 'src/domain/entities/users.entity';
+import { UsersRepository } from '../../infraestructure/database/repositories/users.repository';
+import { Error } from '../../presentation/responses/error.types';
+import { Users } from '../../domain/entities/users.entity';
 
 @Injectable()
 export class UsersService {

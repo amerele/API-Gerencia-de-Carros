@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { UsersModule } from 'src/domain/modules/users.module';
-import { PassportModule } from '@nestjs/passport';
-import { SessionSerializer } from './session.serializer';
 import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
+import { PassportModule } from '@nestjs/passport';
+import { AuthService } from './auth.service';
+import { UsersModule } from '../domain/modules/users.module';
+import { SessionSerializer } from './session.serializer';
 import { JwtStrategy } from './authenticated.guard';
 
 @Module({

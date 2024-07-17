@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CarsRepository } from 'src/infraestructure/database/repositories/cars.repository';
-import { Error } from 'src/presentation/responses/error.types';
+import { CarsRepository } from '../../infraestructure/database/repositories/cars.repository';
+import { Error } from '../../presentation/responses/error.types';
 import { UsersService } from './users.service';
-import { Cars } from 'src/domain/entities/cars.entity';
+import { Cars } from '../../domain/entities/cars.entity';
 import { BodyCarsDto } from '../DTOs/body-cars.dto';
 
 @Injectable()
@@ -20,9 +20,9 @@ export class CarsService {
       throw error;
     }
   }
-  async findAvaliable(): Promise<Cars[]> {
+  async findByParam(filters?: Cars): Promise<Cars[]> {
     try {
-      return await this.carRepository.findAvaliable();
+      return await this.carRepository.findByParam(filters);
     } catch (error) {
       console.log(error);
       throw error;

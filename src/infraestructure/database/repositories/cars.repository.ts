@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
-import { Cars } from 'src/domain/entities/cars.entity';
-import { BodyCarsDto } from 'src/application/DTOs/body-cars.dto';
+import { Cars } from '../../../domain/entities/cars.entity';
+import { BodyCarsDto } from '../../../application/DTOs/body-cars.dto';
 
 @Injectable()
 export class CarsRepository {
@@ -13,8 +13,8 @@ export class CarsRepository {
   async findAll(): Promise<Cars[]> {
     return await this.carModel.find();
   }
-  async findAvaliable(): Promise<any[]> {
-    return await this.carModel.where({avaliable: true}).find();
+  async findByParam(filter: Cars): Promise<Cars[]> {
+    return await this.carModel.find(filter);
   }
   async findByPrimary(id: string): Promise<Cars> {
     try {
@@ -25,7 +25,7 @@ export class CarsRepository {
   }
   async validateAvaliability(id: string): Promise<Cars | string> {
     try {
-      return await this.carModel.findById(id).where({avaliable: true}).exec();
+      return await this.carModel.findById(id).where({ avaliable: true }).exec();
     } catch (error) {
       return '';
     }
@@ -37,7 +37,10 @@ export class CarsRepository {
     const createdCar = new this.carModel(carBodyDto);
     return await createdCar.save();
   }
-  async update(id: string, carBodyDto: any): Promise<BodyCarsDto> {
+  async update(
+    id: string,
+    carBodyDto: Partial<BodyCarsDto>,
+  ): Promise<BodyCarsDto> {
     return await this.carModel.findByIdAndUpdate(id, carBodyDto);
   }
   async delete(id: string): Promise<Cars> {

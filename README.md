@@ -3,11 +3,11 @@
   Esta API foi desenvolvida para o teste de desenvolvedor Back-End na HappMobi
 
 ## 🎯 Especificações
-  ✔ Rotas de usuários, carros e reservas
-  ✔ Login e registro
-  ✔ Proteção das Rotas Privadas
-  ✔ Documentação com Swagger
-  ✔ Implantação de testes
+ - ✔ Rotas de usuários, carros e reservas
+ - ✔ Login e registro
+ - ✔ Proteção das Rotas Privadas
+ - ✔ Documentação com Swagger
+ - ✔ Implantação de testes
   
 ## 🧑🏻‍💻 Técnologias utilizadas
 - ### NodeJs (18.15)

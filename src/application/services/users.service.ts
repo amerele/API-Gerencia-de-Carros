@@ -13,7 +13,7 @@ export class UsersService {
       return await this.usersRepository.findAll();
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);
     }
   }
   async findByPrimary(id: string): Promise<Users> {
@@ -23,7 +23,7 @@ export class UsersService {
       return user;
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);
     }
   }
   async findByUsername(username: string): Promise<Users> {
@@ -33,32 +33,35 @@ export class UsersService {
       return user;
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);
     }
   }
-  
 
   async create(bodyUsersDto: BodyUsersDto): Promise<BodyUsersDto> {
-    bodyUsersDto.username = bodyUsersDto.username.toLowerCase() 
-
-    const alreadyExists = await this.usersRepository.findByUsername(bodyUsersDto.username);
+    bodyUsersDto.username = bodyUsersDto.username.toLowerCase();
+    const alreadyExists = await this.usersRepository.findByUsername(
+      bodyUsersDto.username,
+    );
     if (alreadyExists) throw Error(409, 'This username already exists');
-    
+
     try {
       return await this.usersRepository.create(bodyUsersDto);
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);
     }
   }
-  async update(id: string, bodyUsersDto: Partial<BodyUsersDto>): Promise<BodyUsersDto> {
+  async update(
+    id: string,
+    bodyUsersDto: Partial<BodyUsersDto>,
+  ): Promise<BodyUsersDto> {
     await this.findByPrimary(id);
     try {
       await this.usersRepository.update(id, bodyUsersDto);
       return this.usersRepository.findByPrimary(id);
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);
     }
   }
   async delete(id: string): Promise<Users> {
@@ -67,7 +70,7 @@ export class UsersService {
       return this.usersRepository.delete(id);
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);
     }
   }
 }

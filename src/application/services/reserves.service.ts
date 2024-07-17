@@ -19,7 +19,7 @@ export class ReserveService {
       return await this.reserveRepository.findAllReserves(status);
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
   async findReserveByUser(
@@ -34,7 +34,7 @@ export class ReserveService {
       );
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
   async findByPrimary(id: string): Promise<Reserves> {
@@ -44,7 +44,7 @@ export class ReserveService {
       return await this.reserveRepository.findByPrimary(id);
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
   async validateUserReserves(userId: string): Promise<null> {
@@ -56,7 +56,7 @@ export class ReserveService {
       return;
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
   //TODO verificar se reserva já continuou
@@ -68,7 +68,7 @@ export class ReserveService {
       return;
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
   async reserve(bodyReserveDto: BodyReservesDto): Promise<any> {
@@ -114,7 +114,7 @@ export class ReserveService {
       return reserve;
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
 
@@ -127,7 +127,7 @@ export class ReserveService {
       return this.reserveRepository.findByPrimary(id);
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
   async delete(bodyReserveDto: any): Promise<any> {
@@ -135,7 +135,7 @@ export class ReserveService {
       return this.reserveRepository.delete(bodyReserveDto);
     } catch (error) {
       console.log(error);
-      throw error;
+      throw Error(500, error.message);;
     }
   }
 }

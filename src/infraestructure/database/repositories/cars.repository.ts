@@ -13,7 +13,7 @@ export class CarsRepository {
   async findAll(): Promise<Cars[]> {
     return await this.carModel.find();
   }
-  async findByParam(filter: Cars): Promise<Cars[]> {
+  async findByParam(filter: Partial<Cars>): Promise<Cars[]> {
     return await this.carModel.find(filter);
   }
   async findByPrimary(id: string): Promise<Cars> {

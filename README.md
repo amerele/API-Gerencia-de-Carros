@@ -31,11 +31,12 @@
   O código conta com testes unitários Jest, autenticação JWT e guards de rotas publicas e privadas através do token, além de tratativa personalizada de erros.
   
   Foi utilizado uma estrutura de pastas seguindo Clean Architecture, que pode ser melhor entendido abaixo:
+                        ```plaintext
                          -----------------------------
                         |        Presentation        |
                         |----------------------------|
                         |                            |
-                        | Controllers, Decoratos     |
+                        | Controllers, Decorators    |
                         | responses                  |
                          ----------------------------
                                     |
@@ -62,10 +63,9 @@
                         |        Infrastructure      |
                         |----------------------------|
                         |                            |
-                        | Database config,  Models   |
+                        | Database config, Models    |
                         | Repositories,              |
-                         ----------------------------
-
+                         ----------------------------```
   Toda a camada de lógica está presente nas camadas Service.
   
 ## ✏️ Iniciando o Projeto

@@ -1,7 +1,5 @@
 # 🚗 API para Reserva de Carros
 
-  Esta API foi desenvolvida para o teste de desenvolvedor Back-End na HappMobi
-
 ## 🎯 Especificações
  - ✔ Rotas de usuários, carros e reservas
  - ✔ Login e registro
@@ -18,7 +16,12 @@
 - ### Moment (2.30.1)
 - ### JWT Passport (4.0.1)
 - ### Swagger (5.0.1)
-  
+
+## 👨‍✈️ Regras de Negócio
+- As rotas com exceção da rota de login sao protegidas com o uso de token JWT.
+- Não é possível reservar um veiculo já reservado.
+- Não é possível um usuário reservar mais de um veículo.
+
 ## ⚙️ Documentação Swagger
   A documentação completa com Swagger pode ser acessada em {{url}}/docs
   Além disso, toda a Collection do postman está disponível para testes no arquivo ```postman-collection.js```
